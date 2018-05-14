@@ -1,7 +1,7 @@
 FROM debian:jessie
 MAINTAINER kost - https://github.com/kost
 
-ENV PIVX_VERSION=3.0.6 \
+ENV PIVX_VERSION=3.1.0 \
  PIVX_USER=pivx
 ENV PIVX_URL=https://github.com/PIVX-Project/PIVX/releases/download/v$PIVX_VERSION/pivx-$PIVX_VERSION-x86_64-linux-gnu.tar.gz \
  PIVX_CONF=/home/$PIVX_USER/.pivx/pivx.conf
