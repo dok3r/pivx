@@ -14,7 +14,7 @@ mkdir -p /opt && \
 cd /opt && \
 tar xvzf /tmp/pivx.tar.gz && \
 rm /tmp/pivx.tar.gz && \
-ln -sf $PIVX_VERSION pivx && \
+ln -sf pivx-$PIVX_VERSION pivx && \
 ln -sf /opt/pivx/bin/pivxd /usr/local/bin/pivxd && \
 ln -sf /opt/pivx/bin/pivx-cli /usr/local/bin/pivx-cli && \
 ln -sf /opt/pivx/bin/pivx-tx /usr/local/bin/pivx-tx && \
