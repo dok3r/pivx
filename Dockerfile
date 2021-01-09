@@ -1,7 +1,7 @@
 FROM debian:jessie
 MAINTAINER kost - https://github.com/kost
 
-ENV PIVX_VERSION=4.3.0 \
+ENV PIVX_VERSION=5.0.0 \
  PIVX_USER=pivx
 ENV PIVX_URL=https://github.com/PIVX-Project/PIVX/releases/download/v$PIVX_VERSION/pivx-$PIVX_VERSION-x86_64-linux-gnu.tar.gz \
  PIVX_CONF=/home/$PIVX_USER/.pivx/pivx.conf
@@ -20,6 +20,9 @@ ln -sf /opt/pivx/bin/pivx-cli /usr/local/bin/pivx-cli && \
 ln -sf /opt/pivx/bin/pivx-tx /usr/local/bin/pivx-tx && \
 adduser --uid 1000 --system ${PIVX_USER} && \
 mkdir -p /home/${PIVX_USER}/.pivx/ && \
+# install sapling params
+mkdir -p /home/${PIVX_USER}/.pivx-params/ && \
+cp /opt/pivx/share/pivx/*.params /home/${PIVX_USER}/.pivx-params/ && \
 chown -R ${PIVX_USER} /home/${PIVX_USER} && \
 echo "success: $PIVX_CONF"
 
