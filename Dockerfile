@@ -1,19 +1,17 @@
 FROM debian:jessie
 MAINTAINER kost - https://github.com/kost
 
-ENV PIVX_VERSION=5.3.0 \
+ENV PIVX_VERSION=5.3.3 \
  PIVX_USER=pivx
 ENV PIVX_URL=https://github.com/PIVX-Project/PIVX/releases/download/v$PIVX_VERSION/pivx-$PIVX_VERSION-x86_64-linux-gnu.tar.gz \
  PIVX_CONF=/home/$PIVX_USER/.pivx/pivx.conf
 
 RUN apt-get -qq update && \
-apt-get install -yq wget ca-certificates pwgen && \
+apt-get install -yq curl ca-certificates pwgen && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-wget $PIVX_URL -O /tmp/pivx.tar.gz && \
 mkdir -p /opt && \
 cd /opt && \
-tar xvzf /tmp/pivx.tar.gz && \
-rm /tmp/pivx.tar.gz && \
+curl -L $PIVX_URL | tar xvzf - && \
 ln -sf pivx-$PIVX_VERSION pivx && \
 ln -sf /opt/pivx/bin/pivxd /usr/local/bin/pivxd && \
 ln -sf /opt/pivx/bin/pivx-cli /usr/local/bin/pivx-cli && \
